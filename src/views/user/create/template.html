@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <div class="row mb12 p6">
+            <b>Create User</b>
+            <button v-if="!isSaving" @click="onSave" class="btn btn-success go-right"><i class="fa fa-save mr6"></i> Save</button>
+            <button v-else class="btn btn-success go-right"><i class="fa fa-save mr6"></i> Loading...</button>
+            <router-link :to="{name: 'list-user'}">
+                <button class="btn btn-default go-right mr6"><i class="fa fa-arrow-left mr6"></i> Back</button>
+            </router-link>
+        </div>
+        <div class="row">
+            <div class="col-6 p6">
+                <label for="name">Name</label>
+                <input v-model="body.name" id="name" type="text" :class="isSubmited && !body.name ? 'outline-danger' : ''" class="input" />
+                <small v-if="isSubmited && !body.name" class="txt-danger">Name is required.</small>
+            </div>
+            <div class="col-6 p6">
+                <label for="email">Email</label>
+                <input v-model="body.email" id="email" type="email" :class="isSubmited && !body.email ? 'outline-danger' : ''" class="input" />
+                <small v-if="isSubmited && !body.email" class="txt-danger">Email is required.</small>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 p6">
+                <label for="gender">Gender</label>
+                <select v-model="body.gender" id="gender" class="input">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+            <div class="col-6 p6">
+                <label for="status">Status</label>
+                <select v-model="body.status" id="status" class="input">
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>

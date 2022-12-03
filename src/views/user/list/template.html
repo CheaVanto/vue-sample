@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="row mb12">
+        <span>Total records: {{users.length || '0'}}</span>
+        <router-link :to="{name: 'create-user'}">
+            <button class="btn btn-info go-right"><i class="fa fa-plus mr6"></i> Create</button>
+        </router-link>
+    </div>
+    <table class="table">
+        <thead>
+            <th width="50px">ID</th>
+            <th width="200px">Name</th>
+            <th width="100px">Gender</th>
+            <th>Email</th>
+            <th width="100px" class="txt-center">Status</th>
+            <th width="150px" class="txt-center">Action</th>
+        </thead>
+        <tbody>
+            <tr v-for="(user, userIndex) in users" :key="user.id">
+                <td>{{user.id}}</td>
+                <td>{{user.name}}</td>
+                <td class="txt-capitalize">{{user.gender}}</td>
+                <td>{{user.email}}</td>
+                <td class="txt-center"><span :class="user.status == 'active' ? 'txt-success' : 'txt-danger'" class="txt-capitalize">{{user.status}}</span></td>
+                <td class="txt-center">
+                    <button @click="detail = user" class="btn btn-info mr6"><i class="fa fa-eye"></i></button>
+                    <router-link :to="{name: 'update-user', params:{id: user.id}}"><button class="btn btn-warning mr6"><i class="fa fa-pen"></i></button></router-link>
+                    <button @click="removeUser(userIndex)" class="btn btn-danger"><i class="fa fa-times"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <DetailModal v-if="detail.id" :user="detail" @onClose="detail = {}"></DetailModal>
+</div>

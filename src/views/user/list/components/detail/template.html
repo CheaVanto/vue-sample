@@ -1,0 +1,34 @@
+<div class="overlay">
+    <div class="modal-md">
+        <div class="row p12 border-bottom">
+            View Detail
+        </div>
+        <div class="modal-body p12">
+            <div class="row mb6">
+                <div class="col-3">ID :</div>
+                <div class="col-9">{{user.id}}</div>
+            </div>
+            <div class="row mb6">
+                <div class="col-3">Name :</div>
+                <div class="col-9">{{user.name}}</div>
+            </div>
+            <div class="row mb6">
+                <div class="col-3">Gender :</div>
+                <div class="col-9">{{user.gender}}</div>
+            </div>
+            <div class="row mb6">
+                <div class="col-3">Email :</div>
+                <div class="col-9">{{user.email}}</div>
+            </div>
+            <div class="row mb6">
+                <div class="col-3">Status :</div>
+                <div class="col-9">
+                    <span :class="user.status == 'inactive'? 'txt-danger' : 'txt-success'" class="txt-capitalize">{{user.status}}</span>
+                </div>
+            </div>
+        </div>
+        <div class="row p12 border-top">
+            <button @click="onClose" class="btn btn-default go-right">Close</button>
+        </div>
+    </div>
+</div>
